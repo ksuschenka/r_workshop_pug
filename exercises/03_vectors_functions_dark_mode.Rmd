@@ -119,16 +119,58 @@ Here, `hotdog_names` is the argument, and `11` is the return value or **output**
 Try out a few other functions. Here are some you could try:
 
 3.1) `max()` gives you the maximum value in a vector. What do you think `min()` does? Use both on `hotdog_2018` and/or `hotdog_2019`.
+```{r}
+max(hotdog_2018)
+```
+```{r}
+min(hotdog_2018)
+```
+```{r}
+min(hotdog_2019)
+```
+
+
+```{r}
+max(hotdog_2019)
+```
 
 3.2) Use `table()` on `hotdog_sex`. What do you get?
+```{r}
+table(hotdog_sex)
+```
+
 
 3.3) Try `mean()` and `sd()` - those return the mean and the standard deviation.
+```{r}
+mean(hotdog_2018)
+sd(hotdog_2018)
+mean(hotdog_2019)
+sd (hotdog_2019)
+```
+
 
 3.4) Use `summary()` on `hotdog_2018` and `hotdog_2019`. What is the difference to using `mean()` and `sd()`?
+```{r}
+summary(hotdog_2018, hotdog_2019)
+```
+
 
 3.5) Use `head()` and `tail()` on either of the vectors. What do these functions do?
+```{r}
+head (hotdog_2018)
+head (hotdog_2019)
+tail (hotdog_2018)
+tail (hotdog_2019)
+head (hotdog_names)
+head (hotdog_sex)
+```
+
 
 3.6) How many hotdogs were eaten in total in the year 2019? Use the function `sum()`.
+```{r}
+sum(hotdog_2019)
+```
+
 
 A lot of functions can take more than one argument.
 For example, you can control the behaviour of `head()` and `tail()` with an additional argument.
@@ -136,7 +178,7 @@ For example, you can control the behaviour of `head()` and `tail()` with an addi
 3.7) Can you find out what the second argument in `head()` (and `tail()`) does? The second argument is a number - try changing it.
 
 ```{r}
-head(hotdog_names, 3)
+head(hotdog_names, 11)
 ```
 
 We can see that arguments have a **position** in the function - for `head()`, the data belongs at the first position, and the number of elements we want to display comes second.
@@ -195,7 +237,8 @@ For example, let's replace the third element in this vector of numbers:
 
 ```{r}
 numbers <- 1:4
-numbers
+(numbers <- 1:3)
+hotdog_names [numbers]
 ```
 
 ```{r}
@@ -205,7 +248,12 @@ numbers
 
 Note how this re-assignment permanently changes the vector.
 
-4.3) Can you change the third and fourth element of `numbers` with different numbers? Can you achieve that in a single assignment (i.e. using `<-` only once)?
+4.3) Can you change the third and fourth element of `numbers` with different numbers? Can you achieve that in a single assignment (i.e. using `<-` only once)? 
+```{r}
+(numbers[ c(2,3)]  <- c(5, 9))
+numbers
+```
+
 
 4.4) Numbers only has four elements - what happens if you try to assign a fifth one?
 
@@ -218,6 +266,12 @@ If we use this logical vector as an index, this is what happens:
 numbers <- 1:4
 index <- c(TRUE, TRUE, FALSE, TRUE)
 numbers[index]
+```
+
+
+```{r}
+numbers <- numbers [-1]
+numbers
 ```
 
 Remember how we can create logical vectors.
@@ -255,8 +309,19 @@ As humans, we would say something like: "Show me all elements in numbers smaller
 What a computer wants is a statement like this: "Show me all of the elements in `numbers`, where `numbers` is smaller than 3.
 
 4.5) Write code that gives you all elements larger than 6 in the vector `1:10`.
+```{r}
+numbers_kseniya  <- 1:10
+index <- numbers_kseniya > 6
+numbers_kseniya [index]
+```
+
 
 4.6) Write code that replaces all elements larger than 6 in the vector `1:10` with the number 666.
+```{r}
+numbers_kseniya [index] <- c(666, 666, 666, 666)
+numbers_kseniya [index] <- 666
+```
+
 
 Let's apply indexing with logical vectors to our hotdog data.
 
@@ -270,12 +335,37 @@ hotdog_names[hotdog_sex == "female"]
 ```
 
 4.7) Which contestants improved, i.e. who ate more hotdogs in 2019 than in 2018?
+```{r}
+indexes = hotdog_2019 > hotdog_2018
+improved <- hotdog_names [indexes]
+indexes
+improved
+```
+
+
 
 4.8) Get the name of the person who ate the most hot dogs in 2019. Hint: You can use functions inside `[]` - try using `max()`!
+```{r}
+max(hotdog_2019)
+hotdog_2019== max(hotdog_2019)
+hotdog_names [hotdog_2019== max(hotdog_2019)]
+
+```
+
 
 4.9) Can you find the name of the contestant who ate exactly the same number of hot dogs in 2018 and 2019?
+```{r}
+indexes = hotdog_2019 == hotdog_2018
+same <- hotdog_names [indexes]
+indexes
+same
+```
 
 4.10) Remember that you can combine logical comparisons using `&` ("and") and `|` ("or"). Can you get the names of the contestants that ate more than 25 hot dogs in 2019, but less than 30?
+```{r}
+hotdog_names [hotdog_2019 > 25 & hotdog_2019 < 30]
+```
+
 
 ### Optional
 
@@ -334,16 +424,42 @@ Can you use `na.rm = TRUE` to change their behaviour?
 Create a vector that has one or more missing values. Then examine the behaviour of the following functions:
 
 5.1) `sd()`
+```{r}
+bla <- c(1, 20, NA, 12, 3, 99)
+sd(bla)
+```
+
 
 5.2) `min()` and `max()`
+```{r}
+min(bla)
+max(bla)
+```
+
 
 5.3) `summary()`
+```{r}
+summary (bla)
+```
+
 
 5.4) `table()`
+```{r}
+table (bla)
+```
+
 
 5.5) `head()` and `tail()`
+```{r}
+head (bla)
+tail (bla)
+```
+
 
 5.6) `length()`
+```{r}
+length (bla)
+```
 
 ### Optional
 
@@ -352,7 +468,7 @@ Remember how we added a fifth element to a vector that only had four elements:
 ```{r}
 numbers <- 1:4
 numbers[5] <- 10
-numbers
+numbers [7] <- 11
 ```
 
 5.7) Examine what happens if you add a 7th element to a vector that only has four elements.
