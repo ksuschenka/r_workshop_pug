@@ -192,16 +192,44 @@ head(mess_around$age, 10)
 ```
 
 1.1) Select the column `gender` from the `nerd` data frame and save it into a variable.
+```{r}
+variable_gender = nerd$gender
+```
+
 
 1.2) Select the 10th row of `nerd` and save it into a variable.
+```{r}
+nerd [10, ]
+Zehnte_Zeile= nerd[10, ]
+```
+
 
 1.3) Select row 10 - 13 from `nerd` and save it into a variable.
+```{r}
+nerd [10:13, ]
+zehnte_bis_dreizehnte_zeile = nerd [10:13, ]
+```
+
 
 1.4) Extract the value in the 10th row and the 70th column.
+```{r}
+nerd[10, 70]
+```
+
 
 1.5) Use the "mess around data frame" to overwrite the value in the 10th row and the 70th column with a value of your choice.
+```{r}
+mess_around  [10, 70] <- 7985633
+mess_around
+```
+
 
 1.6) Use the "mess around data frame" to overwrite the entire 1st column with a single value of your choice.
+```{r}
+mess_around [ ,1] <- 5736376387
+mess_around [ ,1]
+```
+
 
 ### Optional
 
@@ -293,7 +321,7 @@ When we used `summary()` on the entire data frame, the output was a bit overwhel
 The package `skimr` can help us out here, because it produces very elegant summaries.
 If you want to give it a spin, you have to install it first (run the line that is currently commented out).
 
-```{r}
+#```{r}
 # install.packages("skimr")
 
 # Usually, I would first load the package like this: library(skimr)
@@ -301,7 +329,7 @@ If you want to give it a spin, you have to install it first (run the line that i
 # to the skimr package using ::
 # You can use any function from a package with this notation without having to
 # the package first.
-skimr::skim(nerd)
+#skimr::skim(nerd)
 
 # The output might be easier to read if you run it in the console.
 # It works best when combined with the view function from the package "tibble".
