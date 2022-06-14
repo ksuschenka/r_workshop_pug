@@ -84,16 +84,29 @@ typeof(3.2)
 # Let's take a look at how we can "produce" logicals.
 
 # 3.1) Run 12 > 3.
+12 > 3
 
 # 3.1) Run 12 == 12. What does it do? What happens if you try 12 = 12 instead?
 
+12 == 12
+
 # 3.2) What is "cat" != "dog"?
+
+"cat" != "dog"
 
 # 3.3) Try out: FALSE & FALSE, then FALSE & TRUE and finally, TRUE & TRUE. 
 #      What happens?
 
+FALSE & FALSE
+
+FALSE & TRUE
+
+TRUE & TRUE
 # 3.4) Try the same as above, but replace & with | (alt gr + <). What does | do?
 
+FALSE | FALSE
+FALSE | TRUE
+TRUE | TRUE
 ## OPTIONAL --------------------------------------------------------------------
 
 # These exercises are optional - they're not part of the workshop. Run them if 
@@ -148,7 +161,7 @@ number2 + number6
 
 multiplied <- number2 * number6
 multiplied
-
+this_is_a_string <- 'Hallo World'
 # 4.6) Try to run this line, which contains a variable we didn't assign anything 
 #      to yet. What happens?
 empty_variable
@@ -259,7 +272,7 @@ T
 # exercise, quite a lot of stuff as piled up. As me move to the next exercise, 
 # we want to start with a clean slate. We can clean everything we have in our 
 # environment by running the command:
-
+ 
 rm(list = ls())
 
 # While R offers you to save the content of your environment whenever you close 
